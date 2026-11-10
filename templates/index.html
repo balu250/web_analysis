@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PulseLens | Sentiment News Analysis</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  </head>
+  <body>
+    <div class="shell">
+      <aside class="sidebar">
+        <a class="brand" href="/">
+          <span class="brand-mark">P</span>
+          <span>Pulse<span class="brand-accent">Lens</span></span>
+        </a>
+        <div class="sidebar-copy">
+          <span class="eyebrow">LIVE INTELLIGENCE</span>
+          <h1>Read the<br /><em>mood</em> of<br />the news.</h1>
+          <p>Real-time headlines translated into meaningful sentiment signals.</p>
+        </div>
+        <div class="source-card">
+          <span class="status-dot"></span>
+          <div><strong>Google News RSS</strong><small>India · English</small></div>
+        </div>
+        <footer>Powered by VADER + TextBlob<br /><span>Built for better context.</span></footer>
+      </aside>
+
+      <main class="content">
+        <header class="topbar">
+          <div><span class="eyebrow">NEWSROOM / OVERVIEW</span><h2>Sentiment dashboard</h2></div>
+          <button class="refresh-button" id="refreshButton"><span class="refresh-icon">↻</span> Refresh feed</button>
+        </header>
+
+        <section class="toolbar">
+          <div class="search-wrap">
+            <span class="search-icon">⌕</span>
+            <input id="keywordInput" type="search" placeholder="Search headlines by keyword..." autocomplete="off" />
+            <kbd>ENTER</kbd>
+          </div>
+          <span class="last-updated" id="lastUpdated">Waiting for live data</span>
+        </section>
+
+        <div class="error-banner" id="errorBanner" role="alert"></div>
+        <section class="stats-grid" aria-label="Sentiment summary">
+          <article class="stat-card total-card"><div class="stat-label">HEADLINES TRACKED <span>↗</span></div><strong id="totalCount">—</strong><small>in current feed</small></article>
+          <article class="stat-card positive-card"><div class="stat-label"><i></i> POSITIVE</div><strong id="positiveCount">—</strong><small id="positivePercent">—% of headlines</small></article>
+          <article class="stat-card negative-card"><div class="stat-label"><i></i> NEGATIVE</div><strong id="negativeCount">—</strong><small id="negativePercent">—% of headlines</small></article>
+          <article class="stat-card neutral-card"><div class="stat-label"><i></i> NEUTRAL</div><strong id="neutralCount">—</strong><small id="neutralPercent">—% of headlines</small></article>
+        </section>
+
+        <section class="analysis-grid">
+          <article class="panel chart-panel">
+            <div class="panel-heading"><div><span class="eyebrow">DISTRIBUTION</span><h3>News mood at a glance</h3></div><span class="live-pill"><i></i> LIVE</span></div>
+            <div class="chart-area"><div class="donut" id="donut"><div><strong id="donutTotal">—</strong><span>headlines</span></div></div><div class="legend"><div><span class="legend-dot positive"></span><b>Positive</b><strong id="legendPositive">—</strong></div><div><span class="legend-dot negative"></span><b>Negative</b><strong id="legendNegative">—</strong></div><div><span class="legend-dot neutral"></span><b>Neutral</b><strong id="legendNeutral">—</strong></div></div></div>
+          </article>
+          <article class="panel insight-panel">
+            <span class="eyebrow">QUICK INSIGHT</span>
+            <div class="insight-icon">✦</div>
+            <h3 id="insightTitle">Analyzing the latest headlines...</h3>
+            <p id="insightText">Your news mood summary will appear here once the feed loads.</p>
+          </article>
+        </section>
+
+        <section class="feed-section">
+          <div class="feed-heading"><div><span class="eyebrow">HEADLINE STREAM</span><h3>Latest stories <span id="resultLabel"></span></h3></div><span class="result-count" id="resultCount">— stories</span></div>
+          <div class="table-wrap">
+            <table><thead><tr><th>HEADLINE</th><th>SENTIMENT</th><th>VADER SCORE</th><th>TEXTBLOB</th><th></th></tr></thead><tbody id="newsBody"><tr><td colspan="5" class="loading">Loading the latest news<span class="loader"></span></td></tr></tbody></table>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+  </body>
+</html>

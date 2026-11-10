@@ -1,0 +1,28 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Remove generated virtual environment",
+			"type": "shell",
+			"command": "powershell",
+			"args": [
+				"-NoProfile",
+				"-Command",
+				"$venv = 'C:\\Users\\Darshan\\Downloads\\balaji\\.venv'; if (Test-Path -LiteralPath $venv) { Remove-Item -LiteralPath $venv -Recurse -Force }; $taskFile = 'C:\\Users\\Darshan\\Downloads\\balaji\\.vscode\\tasks.json'; if (Test-Path -LiteralPath $taskFile) { Remove-Item -LiteralPath $taskFile -Force }"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Delete generated environment folder",
+			"type": "shell",
+			"command": "cmd.exe",
+			"args": [
+				"/c",
+				"if exist \"C:\\Users\\Darshan\\Downloads\\balaji\\.venv\" rmdir /s /q \"C:\\Users\\Darshan\\Downloads\\balaji\\.venv\""
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		}
+	]
+}
