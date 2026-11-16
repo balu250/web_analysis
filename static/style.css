@@ -518,12 +518,6 @@ kbd {
   color: #789044;
 }
 
-.insight-icon {
-  margin-top: 18px;
-  color: #6e8d36;
-  font-size: 32px;
-}
-
 .insight-panel h3 {
   position: relative;
   z-index: 1;

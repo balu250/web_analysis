@@ -53,7 +53,7 @@ async function loadNews() {
   try {
     const keyword = $("keywordInput").value.trim();
     const response = await fetch(`/api/news?keyword=${encodeURIComponent(keyword)}`);
-    const data = await response.json();
+    const data = await response.json().catch(() => ({}));
     if (!response.ok) throw new Error(data.error || "Unable to load news.");
     render(data);
   } catch (error) {
